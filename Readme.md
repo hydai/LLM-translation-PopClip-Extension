@@ -2,6 +2,8 @@
 
 Send the selected text to OpenAI or compatible endpoints for instant translation into your chosen language.
 
+![LOGO](./LLM-Translation.popclipext/translation.svg)
+
 ### Configuration
 
 #### API Key
