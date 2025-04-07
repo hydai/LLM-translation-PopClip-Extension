@@ -1,12 +1,12 @@
 {
   "name": "LLM Translation",
-  "icon": "icon.svg",
+  "icon": "translation.svg",
   "identifier": "tw.hydai.popclip.extension.llm-translation",
-  "description": "Translate text to the target language using LLM. Hold Shift (⇧) to copy just the response.",
-  "note": "To use this extension you will need an <a href=\"https://platform.openai.com/account/api-keys\">OpenAPI API key</a>",
+  "description": "Translate text to the target language using an LLM. Hold Shift (⇧) to copy the translation instead of replacing the original text.",
+  "note": "To use this extension you will need access to an OpenAI compatible LLM API service, such as <a href='https://platform.openai.com/docs/overview'>OpenAI</a> or <a href='https://docs.gaianet.ai/getting-started/quick-start'>Gaia</a>",
   "app": {
-    "name": "ChatGPT",
-    "link": "https://openai.com/blog/chatgpt"
+    "name": "Translation",
+    "link": "https://github.com/hydai/LLM-translation-PopClip-Extension"
   },
   "popclipVersion": 4069,
   "module": "translation.js",
@@ -18,21 +18,21 @@
       "identifier": "endpoint",
       "label": "API Endpoint",
       "type": "string",
-      "description": "The API endpoint to use (e.g. https://api.openai.com/v1)",
+      "description": "The OpenAI compatible API endpoint to use",
       "default value": "https://api.openai.com/v1"
     },
     {
       "identifier": "modelname",
       "label": "Model Name",
       "type": "string",
-      "description": "The model name to use (e.g. gpt-4o-mini)",
+      "description": "The model name",
       "default value": "gpt-4o-mini"
     },
     {
       "identifier": "apikey",
       "label": "API Key",
       "type": "string",
-      "description": "Obtain an API key from: https://platform.openai.com/account/api-keys"
+      "description": "If you are using your own Gaia node. You will not need this!"
     },
     {
       "identifier": "lang",
