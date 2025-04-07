@@ -1,0 +1,45 @@
+{
+  "name": "LLM Translation",
+  "icon": "translation.svg",
+  "identifier": "tw.hydai.popclip.extension.llm-translation",
+  "description": "Translate text to the target language using LLM. Hold Shift (⇧) to copy just the response.",
+  "note": "To use this extension you will need an <a href=\"https://platform.openai.com/account/api-keys\">OpenAPI API key</a>",
+  "app": {
+    "name": "ChatGPT",
+    "link": "https://openai.com/blog/chatgpt"
+  },
+  "popclipVersion": 4069,
+  "module": "translation.js",
+  "entitlements": [
+    "network"
+  ],
+  "options": [
+    {
+      "identifier": "endpoint",
+      "label": "API Endpoint",
+      "type": "string",
+      "description": "The API endpoint to use (e.g. https://api.openai.com/v1)",
+      "default value": "https://api.openai.com/v1"
+    },
+    {
+      "identifier": "modelname",
+      "label": "Model Name",
+      "type": "string",
+      "description": "The model name to use (e.g. gpt-4o-mini)",
+      "default value": "gpt-4o-mini"
+    },
+    {
+      "identifier": "apikey",
+      "label": "API Key",
+      "type": "string",
+      "description": "Obtain an API key from: https://platform.openai.com/account/api-keys"
+    },
+    {
+      "identifier": "lang",
+      "label": "Target Language",
+      "type": "string",
+      "description": "The target language to translate to (e.g. Traditional Chinese)",
+      "default value": "English"
+    }
+  ]
+}
