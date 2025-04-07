@@ -1,6 +1,6 @@
 {
   "name": "LLM Translation",
-  "icon": "translation.svg",
+  "icon": "icon.svg",
   "identifier": "tw.hydai.popclip.extension.llm-translation",
   "description": "Translate text to the target language using LLM. Hold Shift (⇧) to copy just the response.",
   "note": "To use this extension you will need an <a href=\"https://platform.openai.com/account/api-keys\">OpenAPI API key</a>",

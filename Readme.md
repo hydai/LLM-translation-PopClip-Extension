@@ -33,3 +33,10 @@ This is an extension for [PopClip](https://pilotmoon.com/popclip/).
 ### Requirements
 
 Requires PopClip 2022.12 or later.
+
+## Credit
+
+### Icons
+
+* Icon used in the PopClip Extension by [SVG Repo](https://www.svgrepo.com/svg/498497/translate)
+* LOGO by [Claude](https://claude.ai/)
