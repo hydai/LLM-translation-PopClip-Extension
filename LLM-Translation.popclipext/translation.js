@@ -19,11 +19,13 @@ const translate = async (input, options) => {
     ],
   });
   const response = data.choices[0].message.content.trim();
-  // if holding shift, copy just the response. else, paste the last input and response.
+  // if holding shift, it will paste the response. else, copy and preview the last input and response.
   if (popclip.modifiers.shift) {
-    popclip.copyText(response);
-  } else {
     popclip.pasteText(response);
+  } else {
+    popclip.copyText(response);
+    const dialogText = `${response}`;
+    popclip.showText(dialogText, { 'preview': true, 'style': "large" });
   }
   return null;
 };
