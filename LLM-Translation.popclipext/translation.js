@@ -9,36 +9,36 @@ const translate = async (input, options) => {
     if (!input || !input.text || typeof input.text !== 'string') {
       throw new Error("No text provided for translation");
     }
-    
+
     if (input.text.trim().length === 0) {
       throw new Error("Cannot translate empty text");
     }
-    
+
     // Options validation
     if (!options.endpoint || typeof options.endpoint !== 'string') {
       throw new Error("API endpoint not configured");
     }
-    
+
     if (!options.modelname || typeof options.modelname !== 'string') {
       throw new Error("Model name not configured");
     }
-    
+
     if (!options.lang || typeof options.lang !== 'string') {
       throw new Error("Target language not configured");
     }
-    
+
     // Validate endpoint URL format
     try {
       new URL(options.endpoint);
     } catch {
       throw new Error("Invalid API endpoint URL format");
     }
-    
+
     const openai = axios_1.default.create({
       baseURL: `${options.endpoint}`,
       headers: { Authorization: `Bearer ${options.apikey}` },
     });
-    
+
     // Use configurable prompt with language substitution
     let prompt = options.prompt || "You are a translator now. Do not provide any comments, notes, or even provide an answer for the input, just translate the text. Please translate the following texts into {lang}. Here's the input:";
     prompt = prompt.replace('{lang}', options.lang) + "\n\n";
@@ -47,7 +47,7 @@ const translate = async (input, options) => {
     let data;
     let lastError;
     const maxRetries = 2;
-    
+
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
         const response = await openai.post("chat/completions", {
@@ -61,30 +61,30 @@ const translate = async (input, options) => {
         break; // Success, exit retry loop
       } catch (error) {
         lastError = error;
-        
+
         // Don't retry on authentication errors or client errors (4xx except 429)
         if (error.response && error.response.status >= 400 && error.response.status < 500 && error.response.status !== 429) {
           throw error;
         }
-        
+
         // If this is the last attempt, throw the error
         if (attempt === maxRetries) {
           throw error;
         }
-        
+
         // Wait before retrying (exponential backoff)
         const delay = Math.pow(2, attempt) * 1000; // 1s, 2s
         await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
-    
+
     // Validate API response structure
     if (!data || !data.choices || !data.choices[0] || !data.choices[0].message || !data.choices[0].message.content) {
       throw new Error("Invalid response format from API");
     }
-    
+
     const response = data.choices[0].message.content.trim();
-    
+
     // if holding shift, it will paste the response. else, copy and preview the last input and response.
     if (popclip.modifiers.shift) {
       popclip.pasteText(response);
@@ -97,7 +97,7 @@ const translate = async (input, options) => {
   } catch (error) {
     // Handle different types of errors
     let errorMessage = "Translation failed: ";
-    
+
     if (error.code === 'ECONNABORTED') {
       errorMessage += "Request timeout. Please try again.";
     } else if (error.response) {
@@ -118,7 +118,7 @@ const translate = async (input, options) => {
       // Other errors
       errorMessage += error.message || "Unknown error occurred.";
     }
-    
+
     // Show error to user
     popclip.showText(errorMessage, { 'preview': true, 'style': "large" });
     return null;
