@@ -6,6 +6,15 @@ It will show as a popup screen with the translated text, and copy it to the clip
 
 You can press `shift` to paste it directly.
 
+## Features
+
+- **Robust Error Handling**: Comprehensive error handling for network issues, API errors, and invalid responses
+- **Input Validation**: Validates text input and configuration parameters before processing
+- **Automatic Retry**: Smart retry logic with exponential backoff for improved reliability
+- **Secure Configuration**: Password-protected API key field for enhanced security
+- **Customizable Prompts**: Configure your own translation instructions with language placeholder support
+- **URL Validation**: Ensures API endpoints are properly formatted before use
+
 ![LOGO](./LLM-Translation.popclipext/translation.svg)
 
 ### Configuration
@@ -45,6 +54,10 @@ You can choose the model you want to use for translation. The default is `gpt-4o
 #### Target Language
 
 The default target language is `English`, feel free to change it into any language you like, such as `Simplified Chinese`.
+
+#### Translation Prompt
+
+You can now customize the translation instructions by modifying the "Translation Prompt" setting. The default prompt includes a `{lang}` placeholder that will be automatically replaced with your target language. This allows you to fine-tune how the AI translates your text.
 
 ## About
 

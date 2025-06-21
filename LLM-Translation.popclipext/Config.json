@@ -31,8 +31,8 @@
     {
       "identifier": "apikey",
       "label": "API Key",
-      "type": "string",
-      "description": "If you are using your own Gaia node. You will not need this!"
+      "type": "password",
+      "description": "API key for authentication. Leave empty if using your own Gaia node without authentication."
     },
     {
       "identifier": "lang",
@@ -40,6 +40,13 @@
       "type": "string",
       "description": "The target language to translate to (e.g. Traditional Chinese)",
       "default value": "English"
+    },
+    {
+      "identifier": "prompt",
+      "label": "Translation Prompt",
+      "type": "string",
+      "description": "Custom prompt for translation instructions",
+      "default value": "You are a translator now. Do not provide any comments, notes, or even provide an answer for the input, just translate the text. Please translate the following texts into {lang}. Here's the input:"
     }
   ]
 }
