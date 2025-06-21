@@ -31,7 +31,7 @@
     {
       "identifier": "apikey",
       "label": "API Key",
-      "type": "password",
+      "type": "secret",
       "description": "API key for authentication. Leave empty if using your own Gaia node without authentication."
     },
     {
